@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">EXALTURE BANK OF INDIA</string>
+    <string name="welcome_text">****WELCOME TO EXALTURE BANK OF INDIA (Pvt Ltd.)****</string>
+    <string name="choose_account">Which account would you like to access?</string>
+    <string name="current_account">1.Current Account</string>
+    <string name="savings_account">2.Savings Account</string>
+    <string name="submit_button">    Submit    </string>
+    <string name="account_number_text">Account Number</string>
+    <string name="pin_number_text">Pin Number</string>
+    <string name="account_details_text">**********ACCOUNT DETAILS***********</string>
+    <string name="_text">Name</string>
+    <string name="name_view">Name</string>
+    <string name="account_type">Account Type</string>
+    <string name="deposit_button">Deposit</string>
+    <string name="withdraw_button">Withdraw</string>
+    <string name="balance_button">Balance</string>
+    <string name="balance_enquiry_button">Balance Inquiry</string>
+    <string name="exit_button">Exit</string>
+    <string name="enter_amount_to_deposit">Enter Amount To Deposit</string>
+    <string name="available_balance_text">Available Balance</string>
+    <string name="withdraw_amount_view">Enter amount to withdraw</string>
+    <string name="withdraw_balance_view">Enter Amount To Withdraw</string>
+    <string name="thank_you_view">Thank You For Choosing EXALTURE</string>
+    <string name="deposite_balance_view">Available Balance</string>
+    <string name="deposit_balance_view">Available Balance</string>
+    <string name="submit_button_transaction">Submit</string>
+</resources>
