@@ -3,6 +3,7 @@ package com.example.atmbank
 import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.atmbank.databinding.ActivityReadPinNoBinding
 
@@ -20,27 +21,37 @@ class ReadPinNo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityReadPinNoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if(NetworkHelper.isNetworkConnected(this)) {
         currentAccount = intent.getStringExtra("type").toString()
         savingsAccount = intent.getStringExtra("type").toString()
         setArray()
-        binding.submitButton.setOnClickListener {
-            submit()
-            binding.accountNoText.setOnEditorActionListener { _, i, _ ->
-                if (i == EditorInfo.IME_ACTION_DONE) {
-                    binding.messageView.text = "Please Enter Your PIN Number"
-                    true
-                } else {
-                    false
+
+            binding.submitButton.setOnClickListener {
+                submit()
+                binding.accountNoText.setOnEditorActionListener { _, i, _ ->
+                    if (i == EditorInfo.IME_ACTION_DONE) {
+                        binding.messageView.text = "Please Enter Your PIN Number"
+                        true
+                    } else {
+                        false
+                    }
+                }
+                binding.pinNoText.setOnEditorActionListener { _, i, _ ->
+                    if (i == EditorInfo.IME_ACTION_DONE) {
+                        submit()
+                        true
+                    } else {
+                        false
+                    }
                 }
             }
-            binding.pinNoText.setOnEditorActionListener { _, i, _ ->
-                if (i == EditorInfo.IME_ACTION_DONE) {
-                    submit()
-                    true
-                } else {
-                    false
-                }
-            }
+        }
+        else{
+            Toast.makeText(
+                this,
+                "Sorry! There Is No Internet Connection.Please Try Again Later",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
     //function to give account details as arraylist using Account class

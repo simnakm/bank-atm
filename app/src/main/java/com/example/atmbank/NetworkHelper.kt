@@ -22,7 +22,7 @@ object NetworkHelper {
                 }
             }
         }
-        return result      
+        return result
     }
     private fun checkNetworkConnection(
         connectivityManager: ConnectivityManager,

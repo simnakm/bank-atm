@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     android:background="@color/sky_blue50"
     tools:context=".ReadPinNo">
 
@@ -34,6 +35,9 @@
                 android:layout_marginTop="20dp"
                 android:inputType="number"
                 android:textSize="18sp"
+                android:background="@color/blue_100"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -56,8 +60,13 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberPassword"
                 android:textSize="18sp"
+                android:textColor="@color/black"
+                android:background="@color/blue_100"
+                android:fontFamily="sans-serif-black"
                 app:layout_constraintStart_toStartOf="@id/account_no_text_layout"
-                app:layout_constraintTop_toBottomOf="@id/account_no_text_layout"></EditText>
+                app:layout_constraintTop_toBottomOf="@id/account_no_text_layout">
+
+            </EditText>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

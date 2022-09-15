@@ -2,6 +2,7 @@ package com.example.atmbank
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.atmbank.databinding.ActivityDisplayOptionsBinding
 
@@ -19,41 +20,52 @@ class DisplayOPtions : AppCompatActivity() {
         type = intent.getStringExtra("type").toString()
         accountNumber = intent.getStringExtra("account_number").toString()
         arrayList = ArrayList<Account>()
-        arrayList = (intent.getSerializableExtra("list") as ArrayList<Account>?)!!  //fetching arraylist values
-        showDetails()
-        binding.depositButton.setOnClickListener {
-            transaction = "deposit"
-            intent = Intent(this, Transactions::class.java)
-            intent.putExtra("list", arrayList)
-            intent.putExtra("account_number", accountNumber)
-            intent.putExtra("value", transaction)
-            startActivity(intent)
+        arrayList =
+            (intent.getSerializableExtra("list") as ArrayList<Account>?)!!  //fetching arraylist values
+        if (NetworkHelper.isNetworkConnected(this)) {
+            showDetails()
+            binding.depositButton.setOnClickListener {
+                transaction = "deposit"
+                intent = Intent(this, Transactions::class.java)
+                intent.putExtra("list", arrayList)
+                intent.putExtra("account_number", accountNumber)
+                intent.putExtra("value", transaction)
+                startActivity(intent)
+            }
+            binding.withdrawButton.setOnClickListener {
+                transaction = "withdraw"
+                intent = Intent(this, Transactions::class.java)
+                intent.putExtra("list", arrayList)
+                intent.putExtra("account_number", accountNumber)
+                intent.putExtra("value", transaction)
+                startActivity(intent)
+            }
+            binding.checkBalanceButton.setOnClickListener {
+                transaction = "balance"
+                intent = Intent(this, Transactions::class.java)
+                intent.putExtra("list", arrayList)
+                intent.putExtra("account_number", accountNumber)
+                intent.putExtra("value", transaction)
+                startActivity(intent)
+            }
+            binding.exitButton.setOnClickListener {
+                transaction = "exit"
+                intent = Intent(this, Transactions::class.java)
+                intent.putExtra("list", arrayList)
+                intent.putExtra("account_number", accountNumber)
+                intent.putExtra("value", transaction)
+                startActivity(intent)
+            }
         }
-        binding.withdrawButton.setOnClickListener {
-            transaction = "withdraw"
-            intent = Intent(this, Transactions::class.java)
-            intent.putExtra("list", arrayList)
-            intent.putExtra("account_number", accountNumber)
-            intent.putExtra("value", transaction)
-            startActivity(intent)
-        }
-        binding.checkBalanceButton.setOnClickListener {
-            transaction = "balance"
-            intent = Intent(this, Transactions::class.java)
-            intent.putExtra("list", arrayList)
-            intent.putExtra("account_number", accountNumber)
-            intent.putExtra("value", transaction)
-            startActivity(intent)
-        }
-        binding.exitButton.setOnClickListener {
-            transaction = "exit"
-            intent = Intent(this, Transactions::class.java)
-            intent.putExtra("list", arrayList)
-            intent.putExtra("account_number", accountNumber)
-            intent.putExtra("value", transaction)
-            startActivity(intent)
+        else{
+            Toast.makeText(
+                this,
+                "Sorry! There Is No Internet Connection.Please Try Again Later",
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
+
     //function to display name and account type of account holder
     private fun showDetails() {
         if (arrayList != null) {
