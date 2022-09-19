@@ -147,26 +147,6 @@ class Transactions : AppCompatActivity() {
 println(balance)
                         println(theList.get(i).balance)
 
-                       // theList.get(i).balance=balance
-
-
-                        //val editor=sharedPreferences.edit()
-                     // val gson : Gson = Gson()
-
-                     //   println(json)
-
-              // println(theList)
-                        //      val jsonArray:  JsonArray= JsonArray(json.toInt())
-               // theList.get(i).balance=  theList[i].balance-binding.withdrawAmtText.text.toString().toInt()
-                    // println(theList.get(i).balance)
-                        //arrayList[i].balance
-                        //editor.putString("arraylist",json)
-                        //editor.apply()
-                        //setbalance = balance.toString()
-                       // println(arrayList[i].balance)
-                        //  arrayList.set(arrayList[i].balance,arrayList[i].balance)
-
-
                     }
                 }
             }
