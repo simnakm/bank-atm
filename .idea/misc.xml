@@ -3,12 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.134" />
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/drawable/custom_input.xml" value="0.168" />
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/drawable/custom_view.xml" value="0.1575" />
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/drawable/ic_account.xml" value="0.168" />
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/drawable/ic_baseline_account_balance_24.xml" value="0.124" />
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/drawable/ic_launcher_background.xml" value="0.134" />
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/drawable/ic_password.xml" value="0.168" />
         <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/drawable/rounded_rectangle_button.xml" value="0.1" />
-        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/layout/activity_display_options.xml" value="0.2" />
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/layout/activity_display_options.xml" value="0.11165048543689321" />
         <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/layout/activity_read_pin_no.xml" value="0.1543859649122807" />
-        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/layout/activity_transactions.xml" value="0.264" />
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/layout/activity_read_pin_no.xml" value="0.264" />
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/layout/activity_transactions.xml" value="0.25" />
         <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/layout/text_input_layout.xml" value="0.134375" />
+        <entry key="..\:/Users/W/AndroidStudioProjects/ATMBANK/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>
