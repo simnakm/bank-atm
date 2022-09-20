@@ -1,7 +1,6 @@
 package com.example.atmbank
 
 import android.content.Intent
-import android.net.Network
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity

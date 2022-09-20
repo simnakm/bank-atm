@@ -21,10 +21,10 @@ class ReadPinNo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityReadPinNoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if(NetworkHelper.isNetworkConnected(this)) {
-        currentAccount = intent.getStringExtra("type").toString()
-        savingsAccount = intent.getStringExtra("type").toString()
-        setArray()
+        if (NetworkHelper.isNetworkConnected(this)) {
+            currentAccount = intent.getStringExtra("type").toString()
+            savingsAccount = intent.getStringExtra("type").toString()
+            setArray()
 
             binding.submitButton.setOnClickListener {
                 submit()
@@ -45,8 +45,7 @@ class ReadPinNo : AppCompatActivity() {
                     }
                 }
             }
-        }
-        else{
+        } else {
             Toast.makeText(
                 this,
                 "Sorry! There Is No Internet Connection.Please Try Again Later",
@@ -54,6 +53,7 @@ class ReadPinNo : AppCompatActivity() {
             ).show()
         }
     }
+
     //function to give account details as arraylist using Account class
     private fun setArray() {
         arrayList = ArrayList<Account>()//initializing arraylist
@@ -66,6 +66,7 @@ class ReadPinNo : AppCompatActivity() {
         arrayList.add(john)
         arrayList.add(hussain)
     }
+
     //function to check user input account number and pin number matches with
     // account number and pin number in arraylist
     private fun submit() {

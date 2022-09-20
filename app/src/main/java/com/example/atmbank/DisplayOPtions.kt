@@ -56,8 +56,7 @@ class DisplayOPtions : AppCompatActivity() {
                 intent.putExtra("value", transaction)
                 startActivity(intent)
             }
-        }
-        else{
+        } else {
             Toast.makeText(
                 this,
                 "Sorry! There Is No Internet Connection.Please Try Again Later",
