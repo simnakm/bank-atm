@@ -19,13 +19,9 @@
     <color name="green_100">#97ba5a</color>
     <color name="blue_200">#17379d</color>
     <color name="blue_250">#303F9F</color>
-
     <color name="DarkColorPrimary">#1976D2</color>
     <color name="ColorPrimary">#2196F3</color>
     <color name="ColorAccent">#536DFE</color>
     <color name="LightColorPrimary">#BBDEFB</color>
     <color name="ColorBackground">#FFFFFF</color>
-
-
-
 </resources>

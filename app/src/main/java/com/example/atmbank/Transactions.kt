@@ -13,11 +13,12 @@ import com.google.gson.reflect.TypeToken
 class Transactions : AppCompatActivity() {
     private lateinit var binding: ActivityTransactionsBinding
     lateinit var arrayList: ArrayList<Account>
+    lateinit var theList: ArrayList<Account> /* = java.util.ArrayList<com.example.atmbank.Account> */
     var accountNumber: String = ""
     var balance: Int = 0
     var value: String = ""
     var setbalance = ""
-    var json:String=""
+    var json: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTransactionsBinding.inflate(layoutInflater)
@@ -27,11 +28,13 @@ class Transactions : AppCompatActivity() {
         accountNumber = intent.getStringExtra("account_number").toString()
         if (NetworkHelper.isNetworkConnected(this)) {
 
-            val sharedPreferences=getSharedPreferences("sharedPre", Context.MODE_PRIVATE)
-            json= sharedPreferences.getString("arraylist",null ).toString()
-            val gson=GsonBuilder().create()
-            val theList=gson.fromJson<ArrayList<Account>>(json, object :TypeToken<ArrayList<Account>>(){}.type)
-
+            val sharedPreferences = getSharedPreferences("sharedPre", Context.MODE_PRIVATE)
+            json = sharedPreferences.getString("arraylist", null).toString()
+            val gson = GsonBuilder().create()
+            theList = gson.fromJson<ArrayList<Account>>(
+                json,
+                object : TypeToken<ArrayList<Account>>() {}.type
+            )
 
             //checking for user selection
             when (value) {
@@ -62,32 +65,6 @@ class Transactions : AppCompatActivity() {
         binding.depositLayout.visibility = View.GONE
         binding.withdrawLayout.visibility = View.GONE
         binding.thanksLayout.visibility = View.VISIBLE
-       // finish()
-
-    }
-
-    //function to display balance amount in arraylist
-    private fun balanceEnquiry(theList: ArrayList<Account>) {
-        binding.depositLayout.visibility = View.VISIBLE
-        binding.withdrawLayout.visibility = View.GONE
-        binding.depositAmtView.visibility = View.GONE
-        binding.depositAmtText.visibility = View.GONE
-        binding.creditMsgView.visibility = View.GONE
-        binding.submitButton.visibility = View.GONE
-        binding.thanksLayout.visibility = View.GONE
-
-
-
-
-
-        if (theList != null) {
-            for (i in 0 until theList.size) {
-                if (accountNumber == theList[i].accountNumber) {
-                    binding.depositBalanceText.text = theList[i].balance.toString()
-                    // binding.depositBalanceText.text =setbalance
-                }
-            }
-        }
     }
 
     //function to read withdraw amount and update arraylist
@@ -102,8 +79,6 @@ class Transactions : AppCompatActivity() {
                 if (binding.withdrawAmtText.text.toString() == "") {
                     binding.debitMsgView.text = "Please Input Amount"
                 } else {
-
-
                     withdrawSubmit(theList)
                 }
             } else {
@@ -112,12 +87,8 @@ class Transactions : AppCompatActivity() {
                     "Sorry! There Is No Internet Connection.Please Try Again Later",
                     Toast.LENGTH_LONG
                 ).show()
-
-
             }
-
         }
-
         binding.withdrawAmtText.setOnEditorActionListener { _, i, _ ->
             if (i == EditorInfo.IME_ACTION_DONE) {
                 withdrawSubmit(theList)//function call to to update arraylist
@@ -133,20 +104,14 @@ class Transactions : AppCompatActivity() {
         if (withdrawAmount % 100 != 0) {
             binding.debitMsgView.text = "Amount Must Be Multiple Of 100"
         } else {
-           /* val sharedPreferences=getSharedPreferences("sharedPre", Context.MODE_PRIVATE)
-            json= sharedPreferences.getString("arraylist",null ).toString()
-            val gson=GsonBuilder().create()
-            val theList=gson.fromJson<ArrayList<Account>>(json, object :TypeToken<ArrayList<Account>>(){}.type)
-*/
 
             if (theList != null) {
                 for (i in 0 until theList.size) {
                     if (accountNumber == theList[i].accountNumber) {
-                        theList.get(i).balance-= binding.withdrawAmtText.text.toString().toInt()
+                        theList.get(i).balance -= binding.withdrawAmtText.text.toString().toInt()
                         balance = theList[i].balance
-println(balance)
+                        println(balance)
                         println(theList.get(i).balance)
-
                     }
                 }
             }
@@ -166,12 +131,9 @@ println(balance)
         binding.depositBalanceText.visibility = View.GONE
         binding.submitButton.setOnClickListener {
             if (NetworkHelper.isNetworkConnected(this)) {
-
-
                 if (binding.depositAmtText.text.toString() == "") {
                     binding.creditMsgView.text = "Please Input Amount"
                 } else {
-
                     depositSubmit(theList)//function call to update arraylist
                 }
             } else {
@@ -180,7 +142,6 @@ println(balance)
                     "Sorry! There Is No Internet Connection.Please Try Again Later",
                     Toast.LENGTH_LONG
                 ).show()
-
             }
         }
 
@@ -192,7 +153,6 @@ println(balance)
                 false
             }
         }
-
     }
 
     private fun depositSubmit(theList: ArrayList<Account>) {
@@ -200,13 +160,6 @@ println(balance)
         if (depositAmount % 100 != 0) {
             binding.creditMsgView.text = "Amount Must Be Multiple Of 100"
         } else {
-
-        /*    val sharedPreferences=getSharedPreferences("sharedPre", Context.MODE_PRIVATE)
-            json= sharedPreferences.getString("arraylist",null ).toString()
-            val gson=GsonBuilder().create()
-            val theList=gson.fromJson<ArrayList<Account>>(json, object :TypeToken<ArrayList<Account>>(){}.type)
-
-*/
             if (theList != null) {
                 for (i in 0 until theList.size) {
                     if (accountNumber == theList[i].accountNumber) {
@@ -214,7 +167,6 @@ println(balance)
                             .toInt()
                         balance = theList[i].balance
                         theList[i].balance = balance
-                        //   arrayList.set(arrayList[i].balance,arrayList[i].balance)
                     }
                 }
             }
@@ -226,5 +178,22 @@ println(balance)
         }
     }
 
+    //function to display balance amount in arraylist
+    private fun balanceEnquiry(theList: ArrayList<Account>) {
+        binding.depositLayout.visibility = View.VISIBLE
+        binding.withdrawLayout.visibility = View.GONE
+        binding.depositAmtView.visibility = View.GONE
+        binding.depositAmtText.visibility = View.GONE
+        binding.creditMsgView.visibility = View.GONE
+        binding.submitButton.visibility = View.GONE
+        binding.thanksLayout.visibility = View.GONE
 
+        if (theList != null) {
+            for (i in 0 until theList.size) {
+                if (accountNumber == theList[i].accountNumber) {
+                    binding.depositBalanceText.text = theList.get(i).balance.toString()
+                }
+            }
+        }
+    }
 }

@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-
     tools:context=".ReadPinNo">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:padding="20dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,10 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/account_number_text"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toTopOf="@id/pin_layout">
 
             <EditText
@@ -43,7 +39,6 @@
                 android:inputType="number"
                 android:paddingStart="5dp"
                 android:paddingEnd="10dp"
-
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -58,8 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:hint="@string/pin_number_text"
             android:background="@null"
+            android:hint="@string/pin_number_text"
             app:boxBackgroundColor="@color/sky_blue50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,15 +64,15 @@
                 android:id="@+id/pin_no_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberPassword"
-                android:textSize="18sp"
-                android:paddingStart="5dp"
-                android:paddingEnd="10dp"
-                android:textColor="@color/black"
                 android:background="@drawable/custom_input"
                 android:drawableStart="@drawable/ic_password"
                 android:drawablePadding="12dp"
                 android:fontFamily="@font/abel"
+                android:inputType="numberPassword"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/account_no_text_layout"
                 app:layout_constraintTop_toBottomOf="@id/account_no_text_layout">

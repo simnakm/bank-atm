@@ -1,6 +1,5 @@
 package com.example.atmbank
 
-import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -23,134 +22,98 @@ class DisplayOPtions : AppCompatActivity() {
         type = intent.getStringExtra("type").toString()
         accountNumber = intent.getStringExtra("account_number").toString()
         arrayList = ArrayList<Account>()
-        arrayList = (intent.getSerializableExtra("list") as ArrayList<Account>?)!!  //fetching arraylist values
+        arrayList =
+            (intent.getSerializableExtra("list") as ArrayList<Account>?)!!  //fetching arraylist values
 
-            showDetails()
-            binding.depositButton.setOnClickListener {
-                if (NetworkHelper.isNetworkConnected(this)) {
+        showDetails()
+        binding.depositButton.setOnClickListener {
+            if (NetworkHelper.isNetworkConnected(this)) {
 
-                    transaction = "deposit"
-                    intent = Intent(this, Transactions::class.java)
-                    intent.putExtra("list", arrayList)
-                    intent.putExtra("account_number", accountNumber)
-                    intent.putExtra("value", transaction)
-                    startActivity(intent)
-                }
-                else{
-                    Toast.makeText(
-                        this,
-                        "Sorry! There Is No Internet Connection.Please Try Again Later",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-
-
-            }
-            binding.withdrawButton.setOnClickListener {
-                if (NetworkHelper.isNetworkConnected(this)) {
-
-                    transaction = "withdraw"
-                    intent = Intent(this, Transactions::class.java)
-                   intent.putExtra("list", arrayList)
-                   // intent.putExtra("list",)
-                    intent.putExtra("account_number", accountNumber)
-                    intent.putExtra("value", transaction)
-                    startActivity(intent)
-                }
-                else{
-                    Toast.makeText(
-                        this,
-                        "Sorry! There Is No Internet Connection.Please Try Again Later",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-
-            }
-            binding.checkBalanceButton.setOnClickListener {
-
-                if (NetworkHelper.isNetworkConnected(this)) {
-
-                    transaction = "balance"
-                    intent = Intent(this, Transactions::class.java)
-                    intent.putExtra("list", arrayList)
-                    intent.putExtra("account_number", accountNumber)
-                    intent.putExtra("value", transaction)
-                    startActivity(intent)
-                }
-                else{
-                    Toast.makeText(
-                        this,
-                        "Sorry! There Is No Internet Connection.Please Try Again Later",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-            binding.exitButton.setOnClickListener {
-                if (NetworkHelper.isNetworkConnected(this)) {
-
-
-                    val alertdialog:AlertDialog=AlertDialog.Builder(this).create()
-                    alertdialog.setTitle("Alert!")
-                    alertdialog.setMessage("Do you want to exit?")
-                    alertdialog.setButton(AlertDialog.BUTTON_POSITIVE,"Yes")
-                    { _: DialogInterface?, _: Int ->
-
-                        // alertdialog.setButton(AlertDialog.BUTTON_POSITIVE,"Yes"){
-
-                        exitDialog()    //finish()
-                    }
-                            //dialog.dismiss()
-                            alertdialog.setButton(
-                                AlertDialog.BUTTON_NEGATIVE,
-                                "No"
-                            ) { _: DialogInterface?, _: Int ->
-                            // dismissDialog(alertdialog)
-
-                            }
-
-
-                    alertdialog.show()
-                    }
-
-
-
-
-
-                 /* val builder= AlertDialog.Builder(this)
-
-                    builder.setMessage("Are you sure you want to exit?")
-                    builder.setCancelable(false)
-                    builder.setPositiveButton("Yes",new DialogInterface.OnClickListner(){
-                   // builder.setPositiveButton("Yes")
-                    builder.show()
-//                        Dialog,which->
-
-                       // intent = Intent(this, Transactions::class.java)
-
-
-                //    builder.show()
-                  //  builder.setNegativeButton("No"){
-                      //  Dialog,which->
-
-                    //}
-
-*/
-
-
-                  //  builder.setNegativeButton("No",{ dialogInterface: DialogInterface, i: Int -> })
-
-                else
-                {
-                    Toast.makeText(
-                        this,
-                        "Sorry! There Is No Internet Connection.Please Try Again Later",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
+                transaction = "deposit"
+                intent = Intent(this, Transactions::class.java)
+                intent.putExtra("list", arrayList)
+                intent.putExtra("account_number", accountNumber)
+                intent.putExtra("value", transaction)
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    this,
+                    "Sorry! There is no internet connection.Please try again later!",
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
+
+        }
+        binding.withdrawButton.setOnClickListener {
+            if (NetworkHelper.isNetworkConnected(this)) {
+
+                transaction = "withdraw"
+                intent = Intent(this, Transactions::class.java)
+                intent.putExtra("list", arrayList)
+                // intent.putExtra("list",)
+                intent.putExtra("account_number", accountNumber)
+                intent.putExtra("value", transaction)
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    this,
+                    "Sorry! There is no internet connection.Please try again later!",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+
+        }
+        binding.checkBalanceButton.setOnClickListener {
+
+            if (NetworkHelper.isNetworkConnected(this)) {
+
+                transaction = "balance"
+                intent = Intent(this, Transactions::class.java)
+                intent.putExtra("list", arrayList)
+                intent.putExtra("account_number", accountNumber)
+                intent.putExtra("value", transaction)
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    this,
+                    "Sorry! There Is No Internet Connection.Please Try Again Later",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+        binding.exitButton.setOnClickListener {
+            if (NetworkHelper.isNetworkConnected(this)) {
+
+
+                val alertdialog: AlertDialog = AlertDialog.Builder(this).create()
+                alertdialog.setTitle("Alert!")
+                alertdialog.setMessage("Do you want to exit?")
+                alertdialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes")
+                { _: DialogInterface?, _: Int ->
+
+                    exitDialog()
+                }
+
+                alertdialog.setButton(
+                    AlertDialog.BUTTON_NEGATIVE,
+                    "No"
+                ) { _: DialogInterface?, _: Int ->
+
+
+                }
+
+
+                alertdialog.show()
+            } else {
+                Toast.makeText(
+                    this,
+                    "Sorry! There Is No Internet Connection.Please Try Again Later",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
 
 
     }
@@ -179,4 +142,5 @@ class DisplayOPtions : AppCompatActivity() {
         intent.putExtra("value", transaction)
         startActivity(intent)
         finish()
-}}
+    }
+}

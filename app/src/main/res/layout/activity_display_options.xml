@@ -19,41 +19,42 @@
             android:id="@+id/headline_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/account_details_text"
-            android:textSize="20sp"
             android:layout_marginLeft="12dp"
-            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/abel"
+            android:text="@string/account_details_text"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/name_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/name_layout"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headline_layout"
-        android:layout_marginTop="15dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headline_layout">
 
         <TextView
             android:id="@+id/name_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/abel"
             android:padding="5dp"
             android:text="@string/name_view"
-            android:fontFamily="@font/abel"
-            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/name_layout"
             app:layout_constraintEnd_toStartOf="@id/name_text"
             app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="@id/name_layout"
-            app:layout_constraintBottom_toBottomOf="@id/name_layout">
+            app:layout_constraintTop_toTopOf="@id/name_layout">
 
         </TextView>
 
@@ -65,39 +66,40 @@
             android:background="@drawable/custom_view"
             android:fontFamily="@font/abel"
             android:gravity="right"
-            android:textStyle="bold"
+            android:padding="5dp"
             android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/name_view"
-           app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/name_layout"
-            android:padding="5dp">
+            app:layout_constraintTop_toTopOf="@id/name_layout">
+
         </TextView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/account_type_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/account_type_layout"
-        app:layout_constraintTop_toBottomOf="@id/name_layout"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_layout">
 
         <TextView
             android:id="@+id/account_type_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:layout_marginLeft="20dp"
             android:fontFamily="@font/abel"
-            android:textStyle="bold"
-android:layout_marginLeft="20dp"
             android:padding="5dp"
-            android:textColor="@color/black"
             android:text="@string/account_type"
+            android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/account_type_layout"
             app:layout_constraintEnd_toStartOf="@id/account_type_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/account_type_layout"
-            app:layout_constraintBottom_toBottomOf="@id/account_type_layout">
+            app:layout_constraintTop_toTopOf="@id/account_type_layout">
 
         </TextView>
 
@@ -106,15 +108,14 @@ android:layout_marginLeft="20dp"
             android:id="@+id/account_type_text"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-           android:padding="5dp"
             android:layout_marginLeft="50dp"
             android:background="@drawable/custom_view"
-
             android:fontFamily="@font/abel"
-            android:textStyle="bold"
+            android:padding="5dp"
             android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/account_type_view"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/account_type_view"
             app:layout_constraintTop_toTopOf="@id/account_type_layout">
 
         </TextView>
@@ -127,8 +128,8 @@ android:layout_marginLeft="20dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/account_type_layout"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/account_type_layout">
 
         <TextView
             android:id="@+id/choose_option_view"
@@ -137,10 +138,10 @@ android:layout_marginLeft="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/abel"
-            android:textStyle="bold"
             android:text="Choose one option to continue"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/user_option_layout">
 
@@ -152,8 +153,8 @@ android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:background="@drawable/rounded_rectangle_button"
-            android:text="@string/deposit_button"
             android:fontFamily="@font/abel"
+            android:text="@string/deposit_button"
             android:textStyle="bold"
             app:backgroundTint="@null"
             app:layout_constraintEnd_toStartOf="@id/check_balance_button"
@@ -168,8 +169,8 @@ android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/rounded_rectangle_button"
-            android:text="@string/withdraw_button"
             android:fontFamily="@font/abel"
+            android:text="@string/withdraw_button"
             android:textStyle="bold"
             app:backgroundTint="@null"
             app:layout_constraintEnd_toEndOf="@id/deposit_button"
@@ -184,10 +185,10 @@ android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@drawable/rounded_rectangle_button"
-            android:text="@string/balance_enquiry_button"
-            app:backgroundTint="@null"
             android:fontFamily="@font/abel"
+            android:text="@string/balance_enquiry_button"
             android:textStyle="bold"
+            app:backgroundTint="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/deposit_button"
             app:layout_constraintTop_toBottomOf="@id/choose_option_view">
@@ -200,10 +201,10 @@ android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/rounded_rectangle_button"
-            android:text="@string/exit_button"
-            app:backgroundTint="@null"
             android:fontFamily="@font/abel"
+            android:text="@string/exit_button"
             android:textStyle="bold"
+            app:backgroundTint="@null"
             app:layout_constraintEnd_toEndOf="@id/check_balance_button"
             app:layout_constraintStart_toStartOf="@id/check_balance_button"
             app:layout_constraintTop_toBottomOf="@id/check_balance_button">

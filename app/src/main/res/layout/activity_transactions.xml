@@ -7,7 +7,7 @@
     android:padding="10dp"
     tools:context=".Transactions">
 
-   <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/deposit_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,6 +47,8 @@
                 android:background="@drawable/custom_view"
                 android:fontFamily="@font/abel"
                 android:inputType="number"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +87,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_layout">
@@ -94,7 +95,6 @@
                 android:id="@+id/credit_msg_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:fontFamily="@font/abel"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -132,19 +132,18 @@
 
             </TextView>
 
-
             <TextView
                 android:id="@+id/deposit_balance_text"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
                 android:fontFamily="@font/abel"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:layout_marginLeft="25dp"
+                app:layout_constraintBottom_toBottomOf="@id/deposit_balance_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/deposit_balance_view"
-                app:layout_constraintTop_toTopOf="@id/deposit_balance_layout"
-                app:layout_constraintBottom_toBottomOf="@id/deposit_balance_layout">
+                app:layout_constraintTop_toTopOf="@id/deposit_balance_layout">
 
             </TextView>
 
@@ -169,12 +168,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/withdraw_layout">
 
-
             <TextView
                 android:id="@+id/withdraw_amt_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:fontFamily="@font/abel"
                 android:text="@string/withdraw_amount_view"
                 android:textColor="@color/black"
@@ -196,6 +193,8 @@
                 android:inputType="number"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
                 app:layout_constraintBottom_toBottomOf="@id/withdraw_amt_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/withdraw_amt_view"
@@ -217,7 +216,6 @@
                 android:id="@+id/withdraw_submit_button"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-
                 android:background="@drawable/rounded_rectangle_button"
                 android:fontFamily="@font/abel"
                 android:text="@string/submit_button_transaction"
@@ -243,7 +241,6 @@
                 android:id="@+id/debit_msg_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:fontFamily="@font/abel"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -255,12 +252,7 @@
             </TextView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-
-
         <androidx.constraintlayout.widget.ConstraintLayout
-
             android:id="@+id/withdraw_balance_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -269,24 +261,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/debit_msg_layout">
 
-
             <TextView
                 android:id="@+id/withdraw_balance_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-android:layout_marginLeft="85dp"
+                android:layout_marginLeft="85dp"
                 android:fontFamily="@font/abel"
                 android:text="@string/available_balance_text"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-
                 app:layout_constraintEnd_toStartOf="@id/withdraw_balance_text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/withdraw_balance_layout">
 
             </TextView>
-
 
             <TextView
                 android:id="@+id/withdraw_balance_text"
@@ -296,16 +285,17 @@ android:layout_marginLeft="85dp"
                 android:fontFamily="@font/abel"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                android:layout_marginLeft="25dp"
+                app:layout_constraintBottom_toBottomOf="@id/withdraw_balance_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/withdraw_balance_view"
-                app:layout_constraintTop_toTopOf="@id/withdraw_balance_layout"
-                app:layout_constraintBottom_toBottomOf="@id/withdraw_balance_layout">
+                app:layout_constraintTop_toTopOf="@id/withdraw_balance_layout">
 
             </TextView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/thanks_layout"
         android:layout_width="match_parent"

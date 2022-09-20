@@ -1,6 +1,7 @@
 package com.example.atmbank
 
 import java.io.Serializable
+
 //class to set account details from arraylist using its primary constructor
 public class Account : Serializable {
     public var accountNumber: String = ""

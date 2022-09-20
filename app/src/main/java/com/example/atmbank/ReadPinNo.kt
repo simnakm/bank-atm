@@ -11,7 +11,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.atmbank.databinding.ActivityReadPinNoBinding
 import com.google.gson.Gson
-import android.content.SharedPreferences as SharedPreferences1
 
 class ReadPinNo : AppCompatActivity() {
 
@@ -23,7 +22,7 @@ class ReadPinNo : AppCompatActivity() {
     var flag: Int = 0
     var accountNumber: String = ""
     var password: String = ""
-    var json:String=""
+    var json: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReadPinNoBinding.inflate(layoutInflater)
@@ -31,8 +30,8 @@ class ReadPinNo : AppCompatActivity() {
         //if(NetworkHelper.isNetworkConnected(this)) {
         currentAccount = intent.getStringExtra("type").toString()
         savingsAccount = intent.getStringExtra("type").toString()
-        binding.pinNoText.visibility=View.GONE
-        binding.submitButton.visibility=View.GONE
+        binding.pinNoText.visibility = View.GONE
+        binding.submitButton.visibility = View.GONE
         setArray()
 
         binding.submitButton.setOnClickListener {
@@ -48,64 +47,57 @@ class ReadPinNo : AppCompatActivity() {
 
         }//submit ends here
 
-
         binding.accountNoText.setOnEditorActionListener { _, i, _ ->
-            if(i==EditorInfo.IME_ACTION_DONE){
+            if (i == EditorInfo.IME_ACTION_DONE) {
                 if (binding.accountNoText.text.toString() == "") {
 
-                    val builder=AlertDialog.Builder(this)
+                    val builder = AlertDialog.Builder(this)
                     builder.setTitle("Alert!")
                     builder.setMessage("Please Enter Your Account Number")
-                    builder.setPositiveButton("OK",{ dialogInterface: DialogInterface, i: Int -> })
+                    builder.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
                     builder.show()
-                    binding.pinNoText.visibility=View.GONE
-                    binding.submitButton.visibility=View.GONE
-                   // binding.messageView.text = "Please Enter Your Account Number"
+                    binding.pinNoText.visibility = View.GONE
+                    binding.submitButton.visibility = View.GONE
+                    // binding.messageView.text = "Please Enter Your Account Number"
                 } else {
                     digits = binding.accountNoText.text.toString().length
                     if (digits != 16) {
-                        val builder=AlertDialog.Builder(this)
+                        val builder = AlertDialog.Builder(this)
                         builder.setTitle("Alert!")
                         builder.setMessage("Please Check Your Account Number")
-                        builder.setPositiveButton("OK",{ dialogInterface: DialogInterface, i: Int -> })
+                        builder.setPositiveButton("OK",
+                            { dialogInterface: DialogInterface, i: Int -> })
                         builder.show()
                     }
                 }
-                if((digits == 16)&& (binding.accountNoText.text.toString() != "")){
-                binding.pinNoText.visibility=View.VISIBLE
-                binding.accountNoText.visibility=View.INVISIBLE}
+                if ((digits == 16) && (binding.accountNoText.text.toString() != "")) {
+                    binding.pinNoText.visibility = View.VISIBLE
+                    binding.pinNoText.isEnabled=true
+                }
                 true
-            }else{
+            } else {
                 false
             }
-
         }
-
-
-
-
-
         binding.pinNoText.setOnEditorActionListener { _, i, _ ->
             if (i == EditorInfo.IME_ACTION_DONE) {
-
                 if (NetworkHelper.isNetworkConnected(this)) {
                     if (binding.pinNoText.text.toString() == "") {
-                        val builder=AlertDialog.Builder(this)
+                        val builder = AlertDialog.Builder(this)
                         builder.setTitle("Alert!")
                         builder.setMessage("Please Enter Your Pin Number")
-                        builder.setPositiveButton("OK",{ dialogInterface: DialogInterface, i: Int -> })
+                        builder.setPositiveButton("OK",
+                            { dialogInterface: DialogInterface, i: Int -> })
                         builder.show()
-
-                       // binding.messageView.text = "Please Enter Your PIN Number"
                     } else {
                         password = binding.pinNoText.text.toString()
                         if (password.length != 4) {
-                            val builder=AlertDialog.Builder(this)
+                            val builder = AlertDialog.Builder(this)
                             builder.setTitle("Alert!")
                             builder.setMessage("Please Check Your Pin Number")
-                            builder.setPositiveButton("OK",{ dialogInterface: DialogInterface, i: Int -> })
+                            builder.setPositiveButton("OK",
+                                { dialogInterface: DialogInterface, i: Int -> })
                             builder.show()
-                          //  binding.messageView.text = "Please Check Your Pin Number"
                         }
                     }
                     submit()
@@ -117,23 +109,19 @@ class ReadPinNo : AppCompatActivity() {
                     ).show()
                 }
 
-                if ((binding.pinNoText.text.toString() == "")&&(password.length != 4)){
-                binding.submitButton.visibility=View.VISIBLE}
+                if ((binding.pinNoText.text.toString() == "") && (password.length != 4)) {
+                    binding.submitButton.visibility = View.VISIBLE
+                }
                 true
             } else {
                 false
             }
-
-
         }
     }
-
 
     //function to give account details as arraylist using Account class
     private fun setArray() {
         arrayList = ArrayList<Account>()//initializing arraylist
-
-
         //assigning values to arraylist using constructor in Account class
         val paul = Account("4035300539804083", "1290", "Alexandra Paul", 10000)
         val john = Account("4742127848216186", "2349", "Samuel John", 50000)
@@ -143,21 +131,19 @@ class ReadPinNo : AppCompatActivity() {
         arrayList.add(john)
         arrayList.add(hussain)
 
-        val sharedPreferences=getSharedPreferences("sharedPre", Context.MODE_PRIVATE)
-        val editor=sharedPreferences.edit()
-        val gson : Gson = Gson()
-        json=gson.toJson(arrayList)
+        val sharedPreferences = getSharedPreferences("sharedPre", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val gson: Gson = Gson()
+        json = gson.toJson(arrayList)
         println(json)
-        editor.putString("arraylist",json)
+        editor.putString("arraylist", json)
         editor.apply()
     }
+
     //function to check user input account number and pin number matches with
     // account number and pin number in arraylist
     private fun submit() {
-
-
         accountNumber = binding.accountNoText.text.toString()
-
         //checks user input with values in arraylist
         for (i in 0 until arrayList.size) {
             if (accountNumber.equals(arrayList.get(i).accountNumber) && (password.equals(
@@ -171,10 +157,9 @@ class ReadPinNo : AppCompatActivity() {
                     intent = Intent(this, DisplayOPtions::class.java)
                     intent.putExtra("type", currentAccount)
                     intent.putExtra("list", arrayList)
-                   // intent.putExtra("list", json)
+                    // intent.putExtra("list", json)
                     intent.putExtra("account_number", accountNumber)
                     startActivity(intent)
-
                     binding.pinNoText.text.clear()
                 }
                 if (savingsAccount.equals("savings")) {
@@ -187,33 +172,20 @@ class ReadPinNo : AppCompatActivity() {
 
                     binding.pinNoText.text.clear()
 
-
                 }
             }
-           /* else{
-                val builder=AlertDialog.Builder(this)
-                builder.setTitle("Alert!")
-                builder.setMessage("Please check..Your account number and pin number does not match!")
-                builder.setPositiveButton("OK",{ dialogInterface: DialogInterface, i: Int -> })
-                builder.show()
-                break
-            }*/
         }
-      /* if (flag == 0) {
+        if (flag != 1) {
 
-           val builder=AlertDialog.Builder(this)
-           builder.setTitle("Alert!")
-           builder.setMessage("Your account number and pin number does not match")
-           builder.setPositiveButton("OK",{ dialogInterface: DialogInterface, i: Int -> })
-           builder.show()
-           binding.pinNoText.visibility=View.GONE
-           binding.submitButton.visibility=View.GONE
-          // binding.messageView.text = "Please Enter Valid Account Number And PIN Number"
-*/
-       // }
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Alert!")
+            builder.setMessage("Your account number and pin number does not match")
+            builder.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
+            builder.show()
+            binding.pinNoText.visibility = View.GONE
+            binding.submitButton.visibility = View.GONE
+        }
     }
-
-
 
 
 }
