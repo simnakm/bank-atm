@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -72,8 +73,10 @@ class ReadPinNo : AppCompatActivity() {
                 }
                 if ((digits == 16) && (binding.accountNoText.text.toString() != "")) {
                     binding.pinNoText.visibility = View.VISIBLE
-                    binding.pinNoText.isEnabled=true
+                    binding.pinNoText.isEnabled = true
                 }
+                closeKeyboard(binding.accountNoText)
+
                 true
             } else {
                 false
@@ -112,12 +115,21 @@ class ReadPinNo : AppCompatActivity() {
                 if ((binding.pinNoText.text.toString() == "") && (password.length != 4)) {
                     binding.submitButton.visibility = View.VISIBLE
                 }
+                closeKeyboard(binding.pinNoText)
                 true
             } else {
                 false
             }
         }
+
     }
+
+    private fun closeKeyboard(view: View) {
+
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
 
     //function to give account details as arraylist using Account class
     private fun setArray() {
@@ -160,7 +172,8 @@ class ReadPinNo : AppCompatActivity() {
                     // intent.putExtra("list", json)
                     intent.putExtra("account_number", accountNumber)
                     startActivity(intent)
-                    binding.pinNoText.text.clear()
+                    //binding.pinNoText.text.clear()
+                    binding.pinNoText.text?.clear().toString()
                 }
                 if (savingsAccount.equals("savings")) {
                     intent = Intent(this, DisplayOPtions::class.java)
@@ -169,9 +182,7 @@ class ReadPinNo : AppCompatActivity() {
                     //intent.putExtra("list", json)
                     intent.putExtra("account_number", accountNumber)
                     startActivity(intent)
-
-                    binding.pinNoText.text.clear()
-
+                    binding.pinNoText.text?.clear().toString()
                 }
             }
         }
@@ -186,7 +197,5 @@ class ReadPinNo : AppCompatActivity() {
             binding.submitButton.visibility = View.GONE
         }
     }
-
-
 }
 

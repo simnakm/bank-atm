@@ -24,4 +24,5 @@
     <string name="deposite_balance_view">Available Balance</string>
     <string name="deposit_balance_view">Available Balance</string>
     <string name="submit_button_transaction">Submit</string>
+    <string name="back">Back</string>
 </resources>

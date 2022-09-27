@@ -1,12 +1,17 @@
 package com.example.atmbank
 
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.atmbank.databinding.ActivityTransactionsBinding
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 
@@ -60,12 +65,25 @@ class Transactions : AppCompatActivity() {
         }
     }
 
+
+    //function to hide keyboard
+    private fun closeKeyboard(view: View) {
+
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
     //function to display message
     private fun exitTransaction(theList: ArrayList<Account>) {
         binding.depositLayout.visibility = View.GONE
         binding.withdrawLayout.visibility = View.GONE
         binding.thanksLayout.visibility = View.VISIBLE
+        binding.backBtn.setOnClickListener {
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
+
 
     //function to read withdraw amount and update arraylist
     private fun withdrawAmount(theList: ArrayList<Account>) {
@@ -77,7 +95,12 @@ class Transactions : AppCompatActivity() {
             if (NetworkHelper.isNetworkConnected(this)) {
 
                 if (binding.withdrawAmtText.text.toString() == "") {
-                    binding.debitMsgView.text = "Please Input Amount"
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Alert!")
+                    builder.setMessage("Please input amount")
+                    builder.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
+                    builder.show()
+                    //binding.debitMsgView.text = "Please Input Amount"
                 } else {
                     withdrawSubmit(theList)
                 }
@@ -100,27 +123,61 @@ class Transactions : AppCompatActivity() {
     }
 
     private fun withdrawSubmit(theList: ArrayList<Account>) {
+        closeKeyboard(binding.withdrawAmtText)
+
         var withdrawAmount: Int = binding.withdrawAmtText.text.toString().toInt()
         if (withdrawAmount % 100 != 0) {
-            binding.debitMsgView.text = "Amount Must Be Multiple Of 100"
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Alert!")
+            builder.setMessage("Amount Must Be Multiple Of 100")
+            builder.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
+            builder.show()
+            // binding.debitMsgView.text = "Amount Must Be Multiple Of 100"
         } else {
 
             if (theList != null) {
                 for (i in 0 until theList.size) {
                     if (accountNumber == theList[i].accountNumber) {
-                        theList.get(i).balance -= binding.withdrawAmtText.text.toString().toInt()
-                        balance = theList[i].balance
-                        println(balance)
-                        println(theList.get(i).balance)
+
+                        if (withdrawAmount > theList[i].balance) {
+                            val builder = AlertDialog.Builder(this)
+                            builder.setTitle("Alert!")
+                            builder.setMessage("Insufficient balance")
+                            builder.setPositiveButton(
+                                "OK",
+                                { dialogInterface: DialogInterface, i: Int -> })
+                            builder.show()
+                            // binding.debitMsgView.text = "Insufficient balance"
+                            break
+                        } else {
+                            theList.get(i).balance -= binding.withdrawAmtText.text.toString()
+                                .toInt()
+                            balance = theList[i].balance
+                            println(balance)
+                            println(theList.get(i).balance)
+                            val sharedPreferences =
+                                getSharedPreferences("sharedPre", Context.MODE_PRIVATE)
+                            val editor = sharedPreferences.edit()
+                            val gson: Gson = Gson()
+                            json = gson.toJson(theList)
+                            println(json)
+                            editor.putString("arraylist", json)
+                            editor.apply()
+                        }
+                        binding.debitMsgView.visibility = View.VISIBLE
+                        binding.debitMsgView.text = "Amount debited successfully "
+                        binding.withdrawBalanceView.visibility = View.VISIBLE
+                        binding.withdrawBalanceText.visibility = View.VISIBLE
+                        binding.withdrawBalanceText.text = balance.toString()
+
+
+
                     }
                 }
             }
-            binding.debitMsgView.visibility = View.VISIBLE
-            binding.debitMsgView.text = "Amount debited successfully "
-            binding.withdrawBalanceView.visibility = View.VISIBLE
-            binding.withdrawBalanceText.visibility = View.VISIBLE
-            binding.withdrawBalanceText.text = balance.toString()
         }
+        binding.withdrawAmtText.text.clear().toString()
+
     }
 
     //function to read deposit amount and update arraylist
@@ -132,7 +189,11 @@ class Transactions : AppCompatActivity() {
         binding.submitButton.setOnClickListener {
             if (NetworkHelper.isNetworkConnected(this)) {
                 if (binding.depositAmtText.text.toString() == "") {
-                    binding.creditMsgView.text = "Please Input Amount"
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Alert!")
+                    builder.setMessage("Please input amount")
+                    builder.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
+                    builder.show()
                 } else {
                     depositSubmit(theList)//function call to update arraylist
                 }
@@ -156,9 +217,15 @@ class Transactions : AppCompatActivity() {
     }
 
     private fun depositSubmit(theList: ArrayList<Account>) {
+        closeKeyboard(binding.depositAmtText)
         var depositAmount: Int = binding.depositAmtText.text.toString().toInt()
         if (depositAmount % 100 != 0) {
-            binding.creditMsgView.text = "Amount Must Be Multiple Of 100"
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Alert!")
+            builder.setMessage("Amount Must Be Multiple Of 100")
+            builder.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
+            builder.show()
+            // binding.creditMsgView.text = "Amount Must Be Multiple Of 100"
         } else {
             if (theList != null) {
                 for (i in 0 until theList.size) {
@@ -169,12 +236,22 @@ class Transactions : AppCompatActivity() {
                         theList[i].balance = balance
                     }
                 }
+
+                val sharedPreferences = getSharedPreferences("sharedPre", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                val gson: Gson = Gson()
+                json = gson.toJson(theList)
+                println(json)
+                editor.putString("arraylist", json)
+                editor.apply()
             }
+            binding.depositAmtText.text.clear().toString()
             binding.creditMsgView.visibility = View.VISIBLE
             binding.creditMsgView.text = "Amount credited successfully "
             binding.depositBalanceView.visibility = View.VISIBLE
             binding.depositBalanceText.visibility = View.VISIBLE
             binding.depositBalanceText.text = balance.toString()
+
         }
     }
 
@@ -197,3 +274,6 @@ class Transactions : AppCompatActivity() {
         }
     }
 }
+
+
+

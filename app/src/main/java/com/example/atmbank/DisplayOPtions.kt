@@ -28,7 +28,6 @@ class DisplayOPtions : AppCompatActivity() {
         showDetails()
         binding.depositButton.setOnClickListener {
             if (NetworkHelper.isNetworkConnected(this)) {
-
                 transaction = "deposit"
                 intent = Intent(this, Transactions::class.java)
                 intent.putExtra("list", arrayList)
@@ -42,12 +41,9 @@ class DisplayOPtions : AppCompatActivity() {
                     Toast.LENGTH_LONG
                 ).show()
             }
-
-
         }
         binding.withdrawButton.setOnClickListener {
             if (NetworkHelper.isNetworkConnected(this)) {
-
                 transaction = "withdraw"
                 intent = Intent(this, Transactions::class.java)
                 intent.putExtra("list", arrayList)
@@ -62,13 +58,9 @@ class DisplayOPtions : AppCompatActivity() {
                     Toast.LENGTH_LONG
                 ).show()
             }
-
-
         }
         binding.checkBalanceButton.setOnClickListener {
-
             if (NetworkHelper.isNetworkConnected(this)) {
-
                 transaction = "balance"
                 intent = Intent(this, Transactions::class.java)
                 intent.putExtra("list", arrayList)
@@ -85,26 +77,19 @@ class DisplayOPtions : AppCompatActivity() {
         }
         binding.exitButton.setOnClickListener {
             if (NetworkHelper.isNetworkConnected(this)) {
-
-
                 val alertdialog: AlertDialog = AlertDialog.Builder(this).create()
                 alertdialog.setTitle("Alert!")
                 alertdialog.setMessage("Do you want to exit?")
                 alertdialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes")
                 { _: DialogInterface?, _: Int ->
-
                     exitDialog()
                 }
-
                 alertdialog.setButton(
                     AlertDialog.BUTTON_NEGATIVE,
                     "No"
                 ) { _: DialogInterface?, _: Int ->
 
-
                 }
-
-
                 alertdialog.show()
             } else {
                 Toast.makeText(
@@ -114,8 +99,6 @@ class DisplayOPtions : AppCompatActivity() {
                 ).show()
             }
         }
-
-
     }
 
     //function to display name and account type of account holder
@@ -141,6 +124,5 @@ class DisplayOPtions : AppCompatActivity() {
         intent.putExtra("account_number", accountNumber)
         intent.putExtra("value", transaction)
         startActivity(intent)
-        finish()
     }
 }

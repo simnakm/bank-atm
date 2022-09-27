@@ -24,4 +24,7 @@
     <color name="ColorAccent">#536DFE</color>
     <color name="LightColorPrimary">#BBDEFB</color>
     <color name="ColorBackground">#FFFFFF</color>
+    <color name="blue">#b2ebf2</color>
+    <color name="blue_dark">#81b9bf</color>
+    <color name="blue_light">#e5ffff</color>
 </resources>
