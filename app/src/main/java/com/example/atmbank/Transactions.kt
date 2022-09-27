@@ -1,5 +1,6 @@
 package com.example.atmbank
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -110,6 +111,11 @@ class Transactions : AppCompatActivity() {
             binding.withdrawBalanceView.visibility = View.VISIBLE
             binding.withdrawBalanceText.visibility = View.VISIBLE
             binding.withdrawBalanceText.text = balance.toString()
+            binding.withdrawBackButton.visibility=View.VISIBLE
+            binding.withdrawBackButton.setOnClickListener {
+                intent = Intent(this, DisplayOPtions::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -151,6 +157,12 @@ class Transactions : AppCompatActivity() {
             binding.depositBalanceView.visibility = View.VISIBLE
             binding.depositBalanceText.visibility = View.VISIBLE
             binding.depositBalanceText.text = balance.toString()
+            binding.depositBackButton.visibility=View.VISIBLE
+            binding.depositBackButton.setOnClickListener {
+                intent = Intent(this, DisplayOPtions::class.java)
+                startActivity(intent)
+            }
+
         }
     }
 
