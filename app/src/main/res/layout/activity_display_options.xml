@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    android:background="@color/sky_blue50"
     tools:context=".DisplayOPtions">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/display_account_layout"
+        android:id="@+id/headline_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,118 +19,164 @@
             android:id="@+id/headline_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/abel"
             android:text="@string/account_details_text"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:fontFamily="sans-serif-black"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headline_layout">
 
         <TextView
             android:id="@+id/name_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:fontFamily="@font/abel"
+            android:padding="5dp"
             android:text="@string/name_view"
-            android:fontFamily="sans-serif-black"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/headline_view"
-            app:layout_constraintTop_toBottomOf="@id/headline_view">
+            app:layout_constraintBottom_toBottomOf="@id/name_layout"
+            app:layout_constraintEnd_toStartOf="@id/name_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/name_layout">
 
         </TextView>
+
 
         <TextView
             android:id="@+id/name_text"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:background="@color/blue_100"
+            android:background="@drawable/custom_view"
+            android:fontFamily="@font/abel"
+            android:gravity="right"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/name_view"
-            app:layout_constraintTop_toBottomOf="@id/headline_view">
+            app:layout_constraintTop_toTopOf="@id/name_layout">
 
         </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/account_type_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_layout">
 
         <TextView
             android:id="@+id/account_type_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:fontFamily="sans-serif-black"
-            android:textStyle="bold"
-            android:textColor="@color/black"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/abel"
+            android:padding="5dp"
             android:text="@string/account_type"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@id/name_view"
-            app:layout_constraintTop_toBottomOf="@+id/name_view">
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/account_type_layout"
+            app:layout_constraintEnd_toStartOf="@id/account_type_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/account_type_layout">
 
         </TextView>
+
+
         <TextView
             android:id="@+id/account_type_text"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:background="@color/blue_100"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/custom_view"
+            android:fontFamily="@font/abel"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@id/name_text"
-            app:layout_constraintTop_toBottomOf="@id/name_text">
+            app:layout_constraintStart_toEndOf="@+id/account_type_view"
+            app:layout_constraintTop_toTopOf="@id/account_type_layout">
 
         </TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/user_option_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/display_account_layout">
+        app:layout_constraintTop_toBottomOf="@id/account_type_layout">
+
         <TextView
             android:id="@+id/choose_option_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/abel"
             android:text="Choose one option to continue"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/user_option_layout">
+
         </TextView>
+
         <Button
             android:id="@+id/deposit_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:background="@drawable/rounded_rectangle_button"
+            android:fontFamily="@font/abel"
             android:text="@string/deposit_button"
+            android:textStyle="bold"
             app:backgroundTint="@null"
             app:layout_constraintEnd_toStartOf="@id/check_balance_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/choose_option_view">
+
         </Button>
+
         <Button
             android:id="@+id/withdraw_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/rounded_rectangle_button"
+            android:fontFamily="@font/abel"
             android:text="@string/withdraw_button"
+            android:textStyle="bold"
             app:backgroundTint="@null"
             app:layout_constraintEnd_toEndOf="@id/deposit_button"
             app:layout_constraintStart_toStartOf="@id/deposit_button"
             app:layout_constraintTop_toBottomOf="@id/deposit_button">
+
         </Button>
 
         <Button
@@ -140,11 +185,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@drawable/rounded_rectangle_button"
+            android:fontFamily="@font/abel"
             android:text="@string/balance_enquiry_button"
+            android:textStyle="bold"
             app:backgroundTint="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/deposit_button"
-            app:layout_constraintTop_toBottomOf="@id/choose_option_view"></Button>
+            app:layout_constraintTop_toBottomOf="@id/choose_option_view">
+
+        </Button>
 
         <Button
             android:id="@+id/exit_button"
@@ -152,11 +201,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/rounded_rectangle_button"
+            android:fontFamily="@font/abel"
             android:text="@string/exit_button"
+            android:textStyle="bold"
             app:backgroundTint="@null"
             app:layout_constraintEnd_toEndOf="@id/check_balance_button"
             app:layout_constraintStart_toStartOf="@id/check_balance_button"
             app:layout_constraintTop_toBottomOf="@id/check_balance_button">
+
         </Button>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
