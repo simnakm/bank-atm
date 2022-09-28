@@ -5,7 +5,7 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.os.Build
-import androidx.core.content.getSystemService
+
 //class for network connection
 object NetworkHelper {
     fun isNetworkConnected(context: Context): Boolean {
@@ -24,6 +24,7 @@ object NetworkHelper {
         }
         return result
     }
+
     private fun checkNetworkConnection(
         connectivityManager: ConnectivityManager,
         network: Network?

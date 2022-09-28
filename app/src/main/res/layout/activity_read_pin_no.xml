@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    android:background="@color/sky_blue50"
     tools:context=".ReadPinNo">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,26 +17,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <com.google.android.material.textfield.TextInputLayout
+
             android:id="@+id/account_no_text_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Account Number"
-            app:boxBackgroundColor="@color/sky_blue50"
+            android:layout_margin="10dp"
+            android:hint="@string/account_number_text"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pin_layout"
             app:layout_constraintTop_toTopOf="@id/pin_layout">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/account_no_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/ic_account"
+                android:drawablePadding="12dp"
+                android:fontFamily="@font/abel"
+                android:imeOptions="actionDone"
                 android:inputType="number"
-                android:textSize="18sp"
-                android:background="@color/blue_100"
-                android:fontFamily="sans-serif-black"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
+                android:singleLine="true"
                 android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -45,28 +56,32 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/pin_no_text_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:hint="Enter Pin Number"
-            app:boxBackgroundColor="@color/sky_blue50"
+            android:layout_marginTop="35dp"
+            android:hint="@string/pin_number_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/account_no_text_layout">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pin_no_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_password"
+                android:drawablePadding="12dp"
+                android:fontFamily="@font/abel"
                 android:inputType="numberPassword"
-                android:textSize="18sp"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
                 android:textColor="@color/black"
-                android:background="@color/blue_100"
-                android:fontFamily="sans-serif-black"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/account_no_text_layout"
                 app:layout_constraintTop_toBottomOf="@id/account_no_text_layout">
 
-            </EditText>
+            </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

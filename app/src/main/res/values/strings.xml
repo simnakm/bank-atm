@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">EXALTURE BANK OF INDIA</string>
-    <string name="welcome_text">****WELCOME TO EXALTURE BANK OF INDIA (Pvt Ltd.)****</string>
+    <string name="app_name">EXALTURE BANK</string>
+    <string name="welcome_text"> WELCOME TO EXALTURE BANK OF INDIA</string>
     <string name="choose_account">Which account would you like to access?</string>
     <string name="current_account">Current Account</string>
     <string name="savings_account">Savings Account</string>
     <string name="submit_button">    Submit    </string>
-    <string name="account_number_text">Account Number</string>
-    <string name="pin_number_text">Pin Number</string>
-    <string name="account_details_text">**********ACCOUNT DETAILS***********</string>
+    <string name="account_number_text">Enter Account Number</string>
+    <string name="pin_number_text">Enter Pin Number</string>
+    <string name="account_details_text">ACCOUNT DETAILS </string>
     <string name="_text">Name</string>
     <string name="name_view">Name</string>
     <string name="account_type">Account Type</string>
@@ -24,4 +24,9 @@
     <string name="deposite_balance_view">Available Balance</string>
     <string name="deposit_balance_view">Available Balance</string>
     <string name="submit_button_transaction">Submit</string>
+    <string name="deposit_back_button">Back</string>
+    <string name="withdraw_back_button">Back</string>
+    <string name="back">Back</string>
+    <string name="no_internet_connection">Sorry! There Is No Internet Connection.Please Try Again Later</string>
+
 </resources>
