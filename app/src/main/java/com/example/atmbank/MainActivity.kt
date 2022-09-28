@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(
                 this,
-                "Sorry! There Is No Internet Connection.Please Try Again Later",
+                getString(R.string.no_internet_connection) ,
                 Toast.LENGTH_LONG
             ).show()
         }
